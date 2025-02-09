@@ -307,6 +307,10 @@
     .tech-section p {
       font-size: 1rem;
     }
+
+    body {
+        font-family: cursive, monospace;
+    }
   }
 
 
