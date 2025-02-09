@@ -1,0 +1,242 @@
+.upload-photo-wrapper-body{
+    margin-top: 80px;
+    height: auto;
+    width: 100%;
+    background-image: url('../images/aotbg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-content: center;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+/* Upload Container */
+.upload-container {
+    background-color: #112;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-self: center;
+    text-align: center;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 850px;
+    width: 100%;
+    opacity: 0.8;
+}
+
+.upload-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: rgb(251, 248, 248);
+}
+
+/* Form Styling */
+.upload-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: whitesmoke;
+}
+
+
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    color: white;
+    font-weight: 500;
+    border-radius: 5px;
+    outline: none;
+    background-color: #111;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    color: black;
+    font-weight: 500;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="file"]:focus {
+    border-color: #007BFF;
+}
+
+/* Upload Button */
+.upload-btn {
+    background-color: #0c4e94;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: #0362c6;
+}
+
+.navbar {
+    opacity: 1;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    color: whitesmoke;
+}
+
+.user {
+    color: rgb(123, 1, 1);
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: whitesmoke;
+    padding: 2px;
+}
+
+@media (max-width: 1000px) {
+    .upload-container {
+        width: 95%;
+    }
+}
+
+
+/* Messages container */
+.messages {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f8d7da;  /* Light red background for errors */
+    color: #155724;  /* Dark red text for error messages */
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    justify-self: center;
+}
+
+/* Success message styling */
+.messages .success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Error message styling */
+.messages .error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Info message styling (if you use info messages) */
+.messages .info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* You can adjust the message box based on your preferences */
+.message {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.message i {
+    margin-right: 10px; /* For any icons you might want to add */
+}
+
+
+
+
+/* General styling for the form group */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Label styling */
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: whitesmoke;
+}
+
+/* Dropdown styling */
+.category-dropdown {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus state for dropdown */
+.category-dropdown:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Hover state for dropdown */
+.category-dropdown:hover {
+    border-color: #4CAF50;
+    cursor: pointer;
+}
+
+/* Dropdown option styling */
+.category-dropdown option {
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+}
+
+/* Disabled default option */
+.category-dropdown option:disabled {
+    color: #888;
+}
+
+/* Form group alignment for small screens */
+@media (max-width: 768px) {
+    .form-group {
+        align-items: stretch;
+    }
+
+    .category-dropdown {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

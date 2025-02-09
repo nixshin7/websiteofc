@@ -1,0 +1,152 @@
+/* Global Reset */
+.login-body {
+    background-image: url('../images/aotbg6.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    font-family: monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for form */
+.container {
+    background-color: #112;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    opacity: 0.8;
+}
+
+
+/* Heading */
+h2 {
+    text-align: center;
+    font-size: 24px;
+    color: whitesmoke;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: whitesmoke;
+    font-size: 13px;
+}
+
+/* Input fields styling */
+input[type="text"], input[type="password"], input[type="email"], button {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #303030;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: black;
+    transition: border-color 0.3s ease;
+    color: whitesmoke;
+    margin: 6px;
+}
+
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    border-color: #5f5e5e;
+    outline: none;
+}
+
+/* Button styling */
+button {
+    background-color: #aaaaaa;
+    color: #112;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #33a238;
+    color: #f9f9f9;
+}
+
+/* Link styling */
+p {
+    text-align: center;
+}
+
+p a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+.noaccount {
+    color: rgb(196, 196, 196);
+    margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 30px;
+        margin: 15px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+}
+
+/* General Message Box Styling */
+.message-box {
+    padding: 1px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #c3e6cb;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+/* Success Message */
+.message-box .success {
+    background-color: #d4edda;
+    color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    background-color: #1f8035;
+}
+
+/* Error Message */
+.message-box .error {
+    background-color: #991823;
+    color: #d4edda;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+}
+
+

@@ -1,0 +1,181 @@
+{% include 'navbar/navbar.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gallery{% endblock %}</title>
+    <link rel="icon" type="png" href="/media/url icon/gallery.png">
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+</head>
+<body class="gallery-wrapper-body">
+    <div class="gallery-container">
+        <h1 class="gallery-title">Photo Gallery</h1>
+        <h1 class="photos-count">Total Photos: <span>{{photos.count}}</span></h1>
+
+        <form method="GET" class="filter-form">
+            <div class="filter-group">
+                <!-- Custom Select for User -->
+                <div class="custom-select" onclick="toggleUserModal()">
+                    <span id="userSelect">Select User</span>
+                    <span class="select-arrow">&#x25BC;</span>
+                </div>
+                <input type="hidden" name="user" id="userInput">
+        
+                <!-- Custom Select for Category -->
+                <div class="custom-select" onclick="toggleCategoryModal()">
+                    <span id="categorySelect">Select Category</span>
+                    <span class="select-arrow">&#x25BC;</span>
+                </div>
+                <input type="hidden" name="category" id="categoryInput">
+        
+                <input type="date" name="date" class="filter-date" value="{{ request.GET.date }}">
+        
+                <button type="submit" class="filter-btn">Apply Filters</button>
+            </div>
+        </form>
+
+        <!-- User Modal -->
+        <div id="userModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('userModal')">&times;</span>
+                <h2>Select User</h2>
+                <ul>
+                    <li onclick="selectAllUsers()">Select All</li>
+                    {% for user in users %}
+                        <li onclick="selectUser('{{ user.username }}', '{{ user.id }}')">{{ user.username }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Category Modal -->
+        <div id="categoryModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('categoryModal')">&times;</span>
+                <h2>Select Category</h2>
+                <ul>
+                    <li onclick="selectAllCategories()">Select All</li>
+                    {% for category in categories %}
+                        <li onclick="selectCategory('{{ category.name }}', '{{ category.id }}')">{{ category.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Photo Gallery -->
+        <div class="photo-gallery">
+            {% for photo in photos %}
+                <div class="photo-item" onclick="openLightbox('{{ photo.photo.url }}', '{{ photo.title }}')">
+                    <div class="photo-image-wrapper">
+                        <img src="{{ photo.photo.url }}" alt="{{ photo.title }}" class="photo-img">
+                    </div>
+                    <div class="photo-info">
+                        <h3 class="photo-title">{{ photo.title }}</h3>
+                        <div class="category-item">
+                            <span class="category-label">Category: </span><span class="category-name">{{ photo.category }}</span>
+                        </div>
+                        <div class="user-info">
+                            <p class="uploaded-by">Uploaded by: <span class="username">{{ photo.user.username }}</span></p>
+                            <p class="upload-date">{{ photo.uploaded_at|date:"F j, Y" }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="empty-gallery">
+                    <p>No photos available in the gallery.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="close-btn" onclick="closeLightbox()">X</button>
+        <img id="lightbox-img" src="" alt="Photo">
+    </div>
+
+    <!-- JavaScript for Lightbox and Modals -->
+    <script>
+        function openLightbox(imageUrl, title) {
+            var lightbox = document.getElementById("lightbox");
+            var lightboxImg = document.getElementById("lightbox-img");
+
+            lightboxImg.src = imageUrl;
+
+            var img = new Image();
+            img.onload = function () {
+                if (img.height > img.width) {
+                    lightboxImg.classList.add("vertical");
+                    lightboxImg.classList.remove("horizontal");
+                } else {
+                    lightboxImg.classList.add("horizontal");
+                    lightboxImg.classList.remove("vertical");
+                }
+            };
+            img.src = imageUrl;
+
+            lightbox.classList.add("open");
+            document.body.classList.add("no-scroll");
+        }
+
+        function closeLightbox() {
+            var lightbox = document.getElementById("lightbox");
+            lightbox.classList.remove("open");
+            document.body.classList.remove("no-scroll");
+        }
+
+        function toggleUserModal() {
+            document.getElementById("userModal").classList.toggle("open");
+        }
+
+        function toggleCategoryModal() {
+            document.getElementById("categoryModal").classList.toggle("open");
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove("open");
+        }
+
+        function selectUser(username, userId) {
+            document.getElementById("userSelect").innerText = username;
+            document.getElementById("userInput").value = userId; // Set the user ID in the hidden input
+            closeModal('userModal');
+        }
+        
+        function selectCategory(categoryName, categoryId) {
+            document.getElementById("categorySelect").innerText = categoryName;
+            document.getElementById("categoryInput").value = categoryId; // Set the category ID in the hidden input
+            closeModal('categoryModal');
+        }
+
+        function selectAllUsers() {
+            let userSelect = document.getElementById("userSelect");
+            userSelect.innerText = "All Users";
+            document.getElementById("userInput").value = ""; // Clear the user input field
+            closeModal('userModal');
+        }
+        
+        function selectAllCategories() {
+            let categorySelect = document.getElementById("categorySelect");
+            categorySelect.innerText = "All Categories";
+            document.getElementById("categoryInput").value = ""; // Clear the category input field
+            closeModal('categoryModal');
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const titles = document.querySelectorAll('.photo-title');
+            const maxLength = 17; // Define the max number of characters
+            
+            titles.forEach(title => {
+              if (title.textContent.length > maxLength) {
+                title.textContent = title.textContent.substring(0, maxLength) + '';
+              }
+            });
+          });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% include 'navbar/navbar.html' %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'authcss/edit-profile.css' %}">
+</head>
+
+<body class="edit-profile-body">
+    {% block content %}
+    <div class="edit-profile-container">
+        <h2>Edit Profile</h2>
+        <hr></hr>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- Profile Image Section -->
+            <div class="form-group profile-section">
+                <label for="profile_image" class="form-label">Profile Image</label>
+                <div class="image-preview rounded" id="profile-image-preview" style="background-image: url({{ user.profile.profile_image.url }});"></div>
+                <button type="button" id="change-profile-btn" class="btn change-btn">Change Profile Picture</button>
+                <input type="file" id="profile_image" name="profile_image" class="image-input hidden" onchange="previewProfileImage()">
+                <div id="profile-message" class="message"></div> <!-- Message for Profile Image -->
+            </div>
+
+            <!-- Background Image Section -->
+            <div class="form-group profile-section">
+                <label for="background_image" class="form-label">Background Image</label>
+                <div class="image-preview normal" id="background-image-preview" style="background-image: url({{ user.profile.background_image.url }});"></div>
+                <button type="button" id="change-background-btn" class="btn change-btn">Change Background Image</button>
+                <input type="file" id="background_image" name="background_image" class="image-input hidden" onchange="previewBackgroundImage()">
+                <div id="background-message" class="message"></div> <!-- Message for Background Image -->
+            </div>
+
+            <!-- Bio Section -->
+            <div class="form-group">
+                <label for="bio" class="form-label">Bio</label>
+                <textarea id="bio" name="bio" rows="4" class="form-control" placeholder="Write about yourself...">{{ user.profile.bio }}</textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+    {% endblock %}
+
+    <script src="/static/js/edit-profile.js"></script>
+
+</body>

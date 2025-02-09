@@ -1,0 +1,92 @@
+<!-- templates/appofc/home.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<body class="home" id="home">
+
+    {% block content %}
+        <section id="main-section">
+            <div class="content">
+                <div class="container">
+                    <section class="section" id="section-1">
+                        <h1>Welcome to SesareGround Official Website</h1>
+                        <div class="links">
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'upload_photo' %}">Upload Photo</a>
+                            <a href="{% url 'upload-video' %}">Upload Video</a>
+                            {% else %}
+                            <div class="unlock-features">
+                                <p class="button-text">Explore and Discover More!</p>
+                                <a class="unlock-text" href="{% url 'register' %}">Get Started</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </section>
+                
+                <!--   <div class="image-container">
+                        <img src="{% static 'images/volkswagenlogo.png' %}" alt="3D Hover Image" class="image-3d">
+                        <h1 class="home-vwlogo-header">Volkswagen Group</h1>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+
+
+        <section id="technology" class="tech-section">
+            <div class="technology-container">
+              <div class="tech-details">
+                <h2>Fully Responsive & Powered by</h2>
+                <img src="{% static 'images/python.png' %}" alt="Python Logo" class="tech-logo">
+                <img src="{% static 'images/django-blackandwhite.png' %}" alt="Django Logo" class="tech-logo">
+              </div>
+              <div class="text-description">
+                <p>SesareGround website is designed to adapt seamlessly to any device and is developed using the power of Python and Django.</p>
+              </div>
+            </div>
+        </section>
+
+
+
+          <section class="video-gallery-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="gallery-title">Explore Our Video Gallery</h2>
+                    <p class="gallery-description">Discover amazing videos across various categories. Dive into the gallery and find your favorite videos.</p>
+                </div>
+                
+
+                {% if user.is_authenticated %}
+                <div class="cta-container">
+                    <a href="{% url 'video_gallery' %}" class="gallery-link">
+
+                        <span class="link-text">View All Videos</span>
+                        <span class="arrow-icon">&#8594;</span>
+                        <!-- Right arrow for style -->
+
+                {% else %}
+                        <a href="{% url 'login' %}" class="gallery-link">
+                        <span class="link-text">View All Videos</span>
+                        <span class="arrow-icon">&#8594;</span>
+
+                {% endif %}
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+    {% endblock %}
+
+    <script src="{% static '/js/javascript.js' %}"></script>
+    <script src="{% static '/js/vwlogo.js' %}"></script>
+
+</body>
+
+
+
+

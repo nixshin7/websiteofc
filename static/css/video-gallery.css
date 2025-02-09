@@ -1,0 +1,267 @@
+/* Main Body Styling */
+.gallery-wrapper-body {
+    margin-top: 80px;
+    height: auto;
+    width: 100%;
+    background-image: url('../images/aotbg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: cursive;
+    color: #333; /* Mixed black for better text contrast */
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styling */
+h1.gallery-title {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 80px;
+    color: #ccc; /* Darker text for better visibility */
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Gallery Container */
+.gallery-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Video Gallery Grid */
+.video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    justify-content: center;
+}
+
+/* Video Card */
+.video-card {
+    position: relative;
+    background-image: url('../images/card-flakes.png');
+    background-color: rgba(255, 255, 255, 0.95); /* Light card background */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Softer, professional shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 340px; /* Limit card width */
+    padding: 20px;
+}
+
+.video-card:hover {
+    transform: translateY(-8px); /* Subtle lift effect */
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Video Thumbnail */
+.video-card video {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px; /* Rounded video corners */
+}
+
+/* Title */
+.video-card h3 {
+    text-align: center;
+    font-size: 18px;
+    margin: 15px 0;
+    color: #333; /* Darker color for the title */
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* Video Info */
+.video-info {
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #555; /* Lighter text color for info */
+}
+
+.video-title {
+    flex-wrap: nowrap;
+    max-width: 95%;
+    justify-self: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+.category {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #112; /* Slightly lighter gray for category */
+    font-size: 16px;
+}
+
+
+
+/* Adjust the uploaded-by-info container to align its content */
+.uploaded-by-info {
+    display: flex;
+    justify-content: flex-start;  /* Align text to the left */
+    gap: 10px;  /* Space between the label and username */
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+/* Style for the 'Uploaded by' label */
+.uploaded-by {
+    color: #555;  /* Slightly darker for contrast */
+    font-weight: bold;  /* Make the label bold */
+}
+
+/* Style for the username */
+.username {
+    color: red;  /* Change to a blue color for the username */
+    font-weight: 600;  /* Make the username bold */
+    text-transform: uppercase;  /* Capitalize the username */
+}
+
+
+
+.uploaded-at {
+    color: #666; /* Lighter gray for upload date */
+    font-size: 12px;
+}
+
+
+/* Empty gallery message */
+.empty-gallery {
+    width: auto;
+    color: #ccc;
+    opacity: 1;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 20px;
+    background-color: #112;
+    font-weight: bolder;
+    text-align: center;
+    justify-self: center;
+}
+
+/* Button to upload video */
+.upload-btn {
+    background-color: #0c4e94;
+    color: #fff;
+    padding: 12px 20px;
+    margin: 20px auto;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px; /* Slightly rounded button */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    width: 200px;
+}
+
+.upload-btn:hover {
+    background-color: #0362c6;
+}
+
+.upload-btn a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .video-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adjust grid layout */
+    }
+
+    .video-card h3 {
+        font-size: 16px;
+    }
+
+    .video-info {
+        padding: 10px 15px;
+    }
+}
+
+/* Lightbox Styling */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#lightbox.open {
+    display: flex;
+    opacity: 1;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px; /* Rounded lightbox image */
+    transition: transform 0.5s ease-in-out;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: color 0.3s, transform 0.3s;
+}
+
+.close-btn:hover {
+    color: rgb(213, 11, 11);
+    transform: scale(1.1);
+}
+
+.close-btn:focus {
+    outline: none;
+}
+
+.close-btn:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 600px) {
+    #lightbox img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+

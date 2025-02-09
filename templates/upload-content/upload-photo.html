@@ -1,0 +1,92 @@
+{% include 'navbar/navbar.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Photo</title>
+    <link rel="stylesheet" href="{% static 'css/upload-photo.css' %}">
+</head>
+<body class="upload-photo-wrapper-body">
+    <div class="upload-container">
+        <h1>Upload Your Photo</h1>
+        <form method="POST" enctype="multipart/form-data" class="upload-form">
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="message">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Photo Title:</label>
+                <input type="text" name="title" id="title" placeholder="Enter a title for your photo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select name="category" id="category" class="category-dropdown" required>
+                    <option value="" disabled {% if not request.POST.category %}selected{% endif %}>Select a category</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}" {% if request.POST.category == category.id|stringformat:"s" %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                    <option value="Other" {% if request.POST.category == 'Other' %}selected{% endif %}>Other</option>
+                </select>
+
+                <!-- Custom category input field -->
+                <input type="text" id="custom-category" name="custom_category" placeholder="Enter your own category" 
+                       style="display: {% if request.POST.category == 'Other' or request.POST.custom_category %}block{% else %}none{% endif %};"
+                       value="{{ request.POST.custom_category }}">
+            </div>
+
+            <div class="form-group">
+                <label for="photo">Choose Photo:</label>
+                <input type="file" name="photo" id="photo" accept="image/*" required>
+            </div>
+
+            <button type="submit" class="upload-btn">Upload Photo</button>
+        </form>
+    </div>
+
+    <script>
+        // Show the custom category input if "Other" is selected or if a custom category has been entered
+        document.getElementById("category").addEventListener("change", function() {
+            var customCategoryInput = document.getElementById("custom-category");
+            if (this.value === "Other" || document.getElementById("custom-category").value) {
+                customCategoryInput.style.display = "block";
+            } else {
+                customCategoryInput.style.display = "none";
+            }
+        });
+
+        // Initial check for showing the custom category input after form submission
+        window.onload = function() {
+            var customCategoryInput = document.getElementById("custom-category");
+            if (document.getElementById("category").value === "Other" || customCategoryInput.value) {
+                customCategoryInput.style.display = "block";
+            }
+        };
+
+        // Client-side validation for file type (ensure it's an image)
+        document.getElementById("photo").addEventListener("change", function(event) {
+            var file = event.target.files[0];
+            if (file && !file.type.startsWith("image/")) {
+                alert("Please upload a valid image file.");
+                event.target.value = '';  // Clear the file input
+            }
+        });
+
+        // Timeout to hide message box after 3 seconds (if needed)
+        setTimeout(function() {
+            const messageBox = document.querySelector('.message');
+            if (messageBox) {
+                messageBox.style.display = 'none';
+            }
+        }, 3000); // 3 seconds
+    </script>
+</body>
+</html>

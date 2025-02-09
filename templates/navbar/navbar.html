@@ -1,0 +1,54 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<!-- Dodaj link za Font Awesome za ikonice -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<!-- navbar.html --> 
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-logo-container">
+            <img class="navbar-logo" src="{% static 'images/aot-logo1.png' %}" alt="" srcset="">
+            <a href="{% url 'home' %}" class="logo">WebsiteOFC</a>
+        </div>
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <!-- Navigation Links -->
+        <ul class="nav-links" id="nav-links">
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'members' %}">Members</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <hr class="hr">
+                <div class="navbar-profile">
+                    {% if user.is_authenticated %}
+                        <img src="{{ user.profile.profile_image.url }}" alt="Profile Image" class="profile-image">
+                    {% else %}
+                        <!-- Replace the default image path with your actual default image -->
+                        <img src="{% static 'profile_pics/default.jpg' %}" alt="Default Profile Image" class="profile-image">
+                    {% endif %}
+                </div>
+                <li><a href="/profile">{{ user.username }}</a></li>
+                <li><a href="/logout">Logout</a></li>
+            {% else %}
+                <!-- Dodavanje ikonica pored Login i Register -->
+                <li>
+                    <a href="/login">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                </li>
+                <li>
+                    <a href="/register">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<script src="/static/js/navbar.js"></script>

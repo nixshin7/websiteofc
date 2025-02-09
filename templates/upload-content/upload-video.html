@@ -1,0 +1,84 @@
+{% include 'navbar/navbar.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Video</title>
+    <link rel="stylesheet" href="{% static 'css/upload-photo.css' %}">
+</head>
+<body class="upload-photo-wrapper-body">
+    <div class="upload-container">
+        <h1>Upload Your Video</h1>
+        <form method="POST" enctype="multipart/form-data" class="upload-form">
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="message">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Video Title:</label>
+                <input type="text" name="title" id="title" placeholder="Enter a title for your video" required>
+            </div>
+
+            <div class="form-group">
+                <label for="video_category">Category:</label>
+                <select name="video_category" id="video_category" class="category-dropdown" required>
+                    <option value="" disabled {% if not request.POST.video_category %}selected{% endif %}>Select a category</option>
+                    {% for category in video_categories %}
+                        <option value="{{ category.id }}" {% if request.POST.video_category == category.id %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                    <option value="Other" {% if request.POST.video_category == 'Other' %}selected{% endif %}>Other</option>
+                </select>
+
+                <!-- Custom category input field -->
+                <input type="text" id="custom-category" name="custom_category" placeholder="Enter your own category" 
+                    style="display: {% if request.POST.video_category == 'Other' or request.GET.video_category == 'Other' %}block{% else %}none{% endif %};" 
+                    value="{{ request.POST.custom_category }}">
+                    
+            </div>
+
+            <!--
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea name="description" id="description" placeholder="Enter a description for your video" rows="4" style="width: 100%;">{{ request.POST.description }}</textarea>
+            </div>
+            -->
+
+            <div class="form-group">
+                <label for="video">Choose Video:</label>
+                <input type="file" name="video" id="video" accept="video/*" required>
+            </div>
+
+            <button type="submit" class="upload-btn">Upload Video</button>
+        </form>
+    </div>
+
+    <script>
+        // Show the custom category input if "Other" is selected
+        document.getElementById("video_category").addEventListener("change", function() {
+            var customCategoryInput = document.getElementById("custom-category");
+            if (this.value === "Other") {
+                customCategoryInput.style.display = "block";
+            } else {
+                customCategoryInput.style.display = "none";
+            }
+        });
+
+        // Trigger the event to check the initial state when the page is loaded
+        window.onload = function() {
+            var categorySelect = document.getElementById("video_category");
+            var customCategoryInput = document.getElementById("custom-category");
+            if (categorySelect.value === "Other") {
+                customCategoryInput.style.display = "block";
+            }
+        };
+    </script>
+</body>
+</html>

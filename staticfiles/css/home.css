@@ -1,0 +1,422 @@
+* {
+    box-sizing: border-box;
+    font-family: cursive;
+}
+
+
+.main-container{
+    margin-top: 80px;
+}
+
+#main-section {
+    background-attachment: fixed;
+    margin-top: -80px;
+    background-image: url('../images/aotbasebg7.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 650px;
+    overflow: hidden;
+}
+
+.content {
+    padding-top: 80px;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    padding-bottom: 180px;
+    padding-top: 110px;
+    align-items: center;
+}
+
+
+
+#section-1 {
+    width: auto;
+    font-family: cursive;
+    justify-self: center;
+}
+
+.section h1 {
+    font-size: 34px;
+    width: 100%;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px;
+    text-align: center;
+    font-weight: 200;
+}
+
+
+.unlock {
+    color: rgb(213, 11, 11);
+}
+
+
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+.links a {
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: #ccc;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 1 !important;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: cursive;
+    color: #112; /* Clean white text */
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 3px; /* Smooth pill-shaped button */
+}
+
+.links a:first-child {
+    opacity: 0;
+}
+
+.links a:last-child {
+    opacity: 0;
+}
+
+.links a:hover {
+    transform: scale(1.05); /* Slight scaling effect */
+    box-shadow: 4px 6px 20px rgba(255, 255, 255, 0.6); /* Brighter glow on hover with #2B3CAB */
+    background-color: #112;
+    color: rgb(157, 155, 155);
+}
+
+.links a:hover {
+    opacity: 1 !important;
+}
+
+
+
+.image-container img{
+    width: 350px;
+    height: 350px;
+    perspective: 1500px; /* Required for 3D rotation */
+    transition: transform 0.3s ease-out; /* Smooth transition */
+    opacity: 0.7;
+}
+
+.home-vwlogo-header {
+    text-align: center;
+    font-weight: 400;
+    text-transform: lowercase;
+    color: ghostwhite;
+    background-color: transparent;
+    font-size: 24px;
+    padding: 10px;
+    margin: 6px;
+}
+
+  
+.image-3d {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: transform 0.3s ease-out; /* Smooth transition */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+  
+.image-container img:hover .image-3d {
+  transition: none; /* Disable transition during hover for smooth effect */
+}
+
+
+/* Container for the unlock features */
+.unlock-features {
+    display: inline-block;
+    padding: 0px 20px;
+    color: #ffffff; /* White text for better contrast */
+    border-radius: 15px; /* Smooth rounded corners */
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Styling the button text */
+.unlock-features .button-text {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #ffffff; /* White text */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    transition: color 0.3s ease;
+}
+
+/* Styling the unlock button */
+.unlock-features .unlock-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: white; /* Clean white text */
+    cursor: pointer;
+    padding: 12px 30px;
+    border-radius: 25px; /* Smooth pill-shaped button */
+    background: linear-gradient(90deg, #2B3CAB, #132669); /* Gradient with #2B3CAB and #132669 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(43, 60, 171, 0.4); /* Glow effect with #2B3CAB */
+}
+
+/* Hover effects for the container */
+.unlock-features:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+}
+
+/* Hover effects for the unlock-text button */
+.unlock-features .unlock-text:hover {
+    transform: scale(1.05); /* Slight scaling effect */
+    box-shadow: 0 6px 20px rgba(43, 60, 171, 0.6); /* Brighter glow on hover with #2B3CAB */
+    background: linear-gradient(90deg, #132669, #2B3CAB); /* Reverse gradient */
+    color: #ccc;
+}
+
+/* Optional: Smooth animation for when the component enters the view */
+.unlock-features {
+    opacity: 0;
+}
+
+
+
+@media (max-width: 924px) {
+    .section {
+        width: 100%;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+    }
+}
+
+@media (max-width: 1200px) {
+    #section-1 {
+        width: 100%;
+    }
+
+    .container {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 880px) {
+    .container{
+        flex-direction: column !important;
+        gap: 55px;
+    }
+
+
+}
+
+@media (max-width: 400px) {
+    #section-1 h1 {
+        width: 100%;
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .image-container img {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+
+
+#technology{
+    padding: 50px;
+    background-color: #112;
+    height: auto;
+    width: 100%;
+  }
+
+.technology-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+  
+  .tech-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: whitesmoke;
+    font-weight: bold;
+  }
+  
+  .tech-section .tech-details {
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+  .tech-section .tech-logo {
+    width: 115px;
+    height: auto;
+  }
+  
+  .tech-section p {
+    font-size: 1.3rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    padding: 30px;
+    background-color: whitesmoke;
+    font-weight: 600;
+  }
+
+
+  @media (max-width: 768px) {
+    .tech-section h2 {
+      font-size: 2.4rem;
+    }
+  
+    .tech-section .tech-logo {
+      width: 100px;
+    }
+  
+    .tech-section p {
+      font-size: 1rem;
+    }
+  }
+
+
+
+
+
+
+
+/* Gallery Section Styling */
+.video-gallery-section {
+    background: linear-gradient(145deg, #f0f4f8, #e1e9f1); /* Soft gradient background */
+    padding: 80px 0; /* More generous padding */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Deep shadow for depth */
+    text-align: center;
+    position: relative;
+}
+
+.video-gallery-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.section-header {
+    margin-bottom: 50px; /* Space between header and button */
+}
+
+.gallery-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #333;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-transform: uppercase; /* Make the title more impactful */
+}
+
+.gallery-description {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-family: 'Arial', sans-serif;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-container {
+    display: inline-block;
+    position: relative;
+}
+
+.gallery-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: #007bff; /* Blue color */
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 50px; /* Pill-shaped button */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out; /* Smooth transition for hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-link .link-text {
+    margin-right: 10px; /* Space between text and arrow */
+}
+
+.gallery-link .arrow-icon {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect for CTA */
+.gallery-link:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-4px); /* Slight lift effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-link:hover .arrow-icon {
+    transform: translateX(10px); /* Move the arrow to the right */
+}
+
+.gallery-link:active {
+    transform: translateY(2px); /* Button press effect */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .gallery-title {
+        font-size: 32px; /* Slightly smaller title on mobile */
+    }
+
+    .gallery-description {
+        font-size: 16px; /* Smaller description text */
+        margin-bottom: 30px;
+    }
+
+    .gallery-link {
+        font-size: 18px; /* Smaller font size for the link */
+        padding: 12px 30px; /* Adjust padding on smaller screens */
+    }
+
+    .gallery-link .arrow-icon {
+        font-size: 20px; /* Smaller arrow icon */
+    }
+}

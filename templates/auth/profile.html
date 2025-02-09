@@ -1,0 +1,55 @@
+{% include 'navbar/navbar.html' %}
+{% load static %}
+
+
+</head>
+<link rel="stylesheet" href="{% static 'authcss/profile.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body class="profile-body">
+{% block content %}
+<div class="profile-page-container">
+    <!-- Background Image -->
+    <div class="profile-background">
+        {% if user.profile.background_image %}
+        <img src="{{ user.profile.background_image.url }}" alt="Background Image" class="background-image">
+        {% else %}
+        <img src="{% static 'background_pics/default_bg.jpg' %}" alt="Default Background Image" class="background-image">
+        {% endif %}
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profile-section">
+        <!-- Profile Picture -->
+        <div class="profile-picture-container">
+            {% if user.profile.profile_image %}
+            <img src="{{ user.profile.profile_image.url }}" alt="Profile Picture" class="profile-picture">
+            {% else %}
+            <img src="{% static 'profile_pics/default.jpg' %}" alt="Default Profile Picture" class="profile-picture">
+            {% endif %}
+        </div>
+
+        <!-- User Info -->
+        <div class="user-info">
+            <h2>{{ user.username.upper }}</h2>
+            <p class="email">{{ user.email }}</p>
+            {% if user.profile.bio %}
+            <p class="bio">{{ user.profile.bio }}</p>
+            {% else %}
+            <p class="bio">This user has not added a bio yet.</p>
+            {% endif %}
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="profile-buttons">
+            <a href="{% url 'edit_profile' %}" class="btn btn-edit">Edit Profile</a>
+            <a href="{% url 'logout' %}" class="btn btn-logout">Log Out</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+
+

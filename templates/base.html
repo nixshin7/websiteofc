@@ -1,0 +1,24 @@
+{% load static %}
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="png" href="/media/url icon/home.png">
+    <title>{% block title %}Welcome Official Website{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'static/js/javascript.js' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<body>
+    {% include 'navbar/navbar.html' %}
+
+    <div class="main-container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src='static/js/javascript.js'></script>
+</body>
+</html>

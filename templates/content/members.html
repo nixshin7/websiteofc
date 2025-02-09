@@ -1,0 +1,48 @@
+{% include 'navbar/navbar.html' %}
+{% load static %}
+
+<title>{% block title %}Members{% endblock %}</title>
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/members.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+{% block content %}
+<body class="members-wrapper-body">
+    <h1 class="main-header">Meet Our Crew</h1>
+    <h1 class="members-count">Total Members: <span>{{members.count}}</span></h1>
+
+    {% if user.is_staff %}
+    <!-- Button to add a new member -->
+    <div class="add-member-button">
+        <a href="{}" class="btn btn-add-member">Add New Member</a>
+    </div>
+    {% endif %}
+
+    <div class="container">
+        {% for member in members %}
+        <div class="card">
+            <div class="card-image">
+                <!-- Profile Picture -->
+                {% if member.image %}
+                    {% if member.user == user %}
+                    <a href="{% url 'update_member' %}" class="update-member"></a>
+                    {% endif %}
+                    <img src="{{ member.image.url }}" alt="{{ member.user.username }}">
+                {% else %}
+                    <img src="{% static 'profile_pics/default.jpg' %}" alt="Default Profile Image" class="profile-image">
+                {% endif %}
+            </div>
+            
+            <div class="card-body-about">
+                <h2 class="card-title">{{ member.user.username }}</h2>
+                <p class="card-role">{{ member.role }}</p>
+            </div>
+
+            <div class="card-body"></div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% load static %}
+
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="png" href="/media/url icon/register.png">
+  <link rel="stylesheet" href="{% static  'authcss/register.css' %}">
+</head>
+
+
+<body class="register-body">
+{% block content %}
+
+  <div class="form-container"> 
+    <form method="POST">
+      {% csrf_token %}
+      {% if messages %}
+      <div class="message-box">
+          {% for message in messages %}
+          <div class="{% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% endif %}">
+              <span>{{ message }}</span>
+          </div>
+          {% endfor %}
+      </div>
+      {% endif %}
+
+      <h2>Register Form</h2> 
+
+      <div class="form-group">
+        <label for="id_username">Username</label>
+        {{ form.username }}
+      </div>
+
+      <div class="form-group">
+        <label for="id_email">Email</label>
+        {{ form.email }}
+      </div>
+
+      <div class="form-group">
+        <label for="id_password">Password</label>
+        {{ form.password }}
+      </div>
+
+      <div class="form-group">
+        <label for="id_password_confirmation">Confirm Password</label>
+        {{ form.password_confirmation }}
+      </div>
+
+      <button type="submit" class="btn btn-primary">Register</button>
+      <p class="noaccount">Already have an account? <a href="{% url 'login' %}">Login Here</a></p>
+
+    </form>
+  </div>
+
+{% endblock %}
+
+<script>
+  setTimeout(function() {
+    const messageBox = document.querySelector('.message-box');
+    if (messageBox) {
+        messageBox.style.display = 'none';
+    }
+}, 3000); // 3 seconds
+</script>
+
+</body>

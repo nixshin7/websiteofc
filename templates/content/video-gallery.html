@@ -1,0 +1,67 @@
+{% include 'navbar/navbar.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gallery</title>
+    <link rel="stylesheet" href="{% static 'css/video-gallery.css' %}">
+</head>
+<body class="gallery-wrapper-body">
+    <div class="gallery-container">
+        <h1 class="gallery-title">Video Gallery</h1>
+
+        {% if videos %}
+            <div class="video-gallery">
+                {% for video in videos %}
+                    <div class="video-card">
+                        <h3 class="video-title">{{ video.title.upper }}</h3>
+                        <video width="100%" height="auto" controls preload="auto">
+                            <source src="{{ video.video.url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-info">
+                            <p class="category">Category: {{ video.video_category.name.upper }}</p>
+                            <p class="uploaded-at">{{ video.uploaded_at|date:"F j, Y" }}</p>
+                            
+
+                            <!--
+                           <div class="description">
+                            {% if video.description %}
+                                <p class="description">{{ video.description }}</p>
+                            {% endif %}
+                            </div>
+                            -->    
+
+                            <div class="uploaded-by-info">
+                                <p class="uploaded-by">Uploaded by: </p>
+                                <p class="username">{{ video.user.username }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="empty-gallery">No videos uploaded yet.</p>
+        {% endif %}
+    </div>
+
+
+
+    <!--  Set the length of .video-title h3  -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const titles = document.querySelectorAll('.video-title');
+          const maxLength = 18; // Define the max number of characters
+          
+          titles.forEach(title => {
+            if (title.textContent.length > maxLength) {
+              title.textContent = title.textContent.substring(0, maxLength) + '...';
+            }
+          });
+        });
+      </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+.members-wrapper-body {
+    margin-top: 80px;
+    height: auto;
+    width: 100%;
+    background-image: url('../images/bg10.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+* {
+    box-sizing: border-box;
+    font-family: cursive;
+}
+
+.navbar {
+    font-family: cursive;
+}
+
+.members-wrapper-body .container {
+    display: flex;
+    flex-wrap: wrap; /* Make sure this is in place */
+    flex-direction: row;
+    justify-self: center;
+    justify-content: center;
+    margin-top: 35px;
+    gap: 15px; /* Added gap to give space between cards */
+}
+
+.main-header {
+    color: #f9f9f9;
+    font-size: 28px;
+    text-transform: uppercase;
+    align-items: center;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.members-count {
+    color: #f9f9f9;
+    font-size: 13px;
+    text-transform: uppercase;
+    align-items: center;
+    text-align: center;
+    padding-top: 5px;
+    color: #ccc;
+}
+
+.members-count span {
+    color: rgb(113, 2, 2);
+    background-color: #f9f9f9f9;
+    padding: 3px;
+    border-radius: 4px;
+    justify-self: center;
+}
+
+.update-member{
+    display: none;
+    position: absolute;
+    top: 3%;
+    left: 80%;
+    background-image: url('/media/profile_pics/edit-image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 33px;
+    height: 33px;
+    text-decoration: none;
+    z-index: 5000;
+    background-color: #f9f9f9;
+    border-radius: 15%;
+    transition: all 0.3s linear;
+}
+
+
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    transition: all 0.8s linear;
+}
+
+
+
+.card-image:hover > .update-member {
+    display: block;
+}
+
+.card {
+    width: 240px;
+    height: auto;
+    border-radius: 7px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    clip-path: polygon(0% 15%, 0 6%, 4% 0, 85% 0%, 100% 0, 100% 15%, 100% 85%, 100% 100%, 85% 100%, 15% 100%, 0 100%, 0% 85%);
+    background-image: url('../images/card-flakes.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-3px)
+}
+
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    image-rendering: crisp-edges;
+    filter: none;
+    overflow: hidden;
+    background-position: center; 
+    clip-path: polygon(0% 15%, 0 6%, 4% 0, 85% 0%, 100% 0, 100% 15%, 100% 85%, 100% 100%, 85% 100%, 15% 100%, 0 100%, 0% 85%);
+}
+
+.card-body-about {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    text-transform: uppercase;
+    padding: 15px;
+}
+
+.card-body {
+    background-image: url('../images/sesarelogo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100px;
+}
+
+.card-body:hover {
+    filter: blur(0.5px);
+}
+
+.card-title {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #112;
+}
+.card-role {
+    font-size: 12px;
+    color: #7f1212;
+    font-weight: bolder;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
